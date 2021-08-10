@@ -1,16 +1,20 @@
 import styled from 'styled-components';
 
-const Item = styled.div`
+const ItemStyles = styled.div`
+  /* border: 1px solid var(--offwhite); */
+  /* box-shadow: var(--bs); */
   background: white;
-  border: 1px solid var(--offWhite);
-  box-shadow: var(--bs);
   position: relative;
   display: flex;
   flex-direction: column;
+
+  /* &:nth-child(odd) {
+    background: var(--pink);
+  } */
   img {
     width: 100%;
     height: 400px;
-    object-fit: cover;
+    background-color: white;
   }
   p {
     line-height: 2;
@@ -22,7 +26,6 @@ const Item = styled.div`
   .buttonList {
     display: grid;
     width: 100%;
-    border-top: 1px solid var(--lightGray);
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-gap: 1px;
     background: var(--lightGray);
@@ -35,4 +38,4 @@ const Item = styled.div`
   }
 `;
 
-export default Item;
+export default ItemStyles;
