@@ -48,7 +48,7 @@ export default function Products({ page }) {
       first: perPage,
     },
   });
-  console.log('Products: ', data, error, loading);
+  // console.log('Products: ', data, error, loading);
   if (loading) {
     return <p>Loading...</p>;
   }

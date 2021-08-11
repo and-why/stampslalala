@@ -7,10 +7,13 @@ const ItemStyles = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-
+  padding: 1em;
   /* &:nth-child(odd) {
     background: var(--pink);
   } */
+  h3 {
+    margin-bottom: 0.25em;
+  }
   img {
     width: 100%;
     height: 400px;
@@ -20,7 +23,7 @@ const ItemStyles = styled.div`
     line-height: 2;
     font-weight: 300;
     flex-grow: 1;
-    padding: 0 3rem;
+    padding: 0;
     font-size: 1.5rem;
   }
   .buttonList {

@@ -56,9 +56,7 @@ export default function ResetForm({ token }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const res = await reset().catch(console.log(error));
-    console.log(res);
-    console.log(error);
+    await reset().catch(console.log(error));
     resetForm();
   }
   return (

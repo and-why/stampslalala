@@ -1,9 +1,14 @@
 import NextLink from 'next/link';
 import styled from 'styled-components';
+import { useCart } from '../lib/cartState';
+import Cart from './Cart';
+import CartCount from './CartCount';
 import { FacebookIcon, TwitterIcon } from './icons/socialIcons';
 import Nav from './Nav';
+import { useUser } from './User';
 
 const Logo = styled.h1`
+  font-family: 'LiuJianMaoCao', cursive;
   font-size: 4em;
   padding: 0.25em;
   margin: 0 0 0.25em 0;
@@ -45,8 +50,10 @@ const HeaderStyles = styled.header`
         height: 30px;
       }
     }
-    .search {
+    .headerRight {
       justify-self: flex-end;
+      display: flex;
+      align-items: center;
       input {
         text-align: right;
         border: none;
@@ -62,6 +69,8 @@ const HeaderStyles = styled.header`
 `;
 
 export default function Header() {
+  const { openCart, toggleCart } = useCart();
+  const user = useUser();
   return (
     <HeaderStyles>
       <div className="bar">
@@ -87,11 +96,20 @@ export default function Header() {
             </a>
           </NextLink>
         </Logo>
-        <div className="search">
+        <div className="headerRight">
           <input placeholder="Search..." />
+          <a onClick={toggleCart}>
+            <CartCount
+              count={user?.cart?.reduce(
+                (tally, cartItem) => tally + cartItem.quantity,
+                0
+              )}
+            />
+          </a>
         </div>
       </div>
       <Nav />
+      <Cart />
     </HeaderStyles>
   );
 }

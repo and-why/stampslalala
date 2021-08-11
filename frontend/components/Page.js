@@ -15,6 +15,12 @@ const GlobalStyles = createGlobalStyle`
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Lato';
+  src: url('/static/Lato-Bold.ttf') format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
 
 html {
   /* --red: #e73b2e; */
@@ -27,6 +33,8 @@ html {
   --white: #f4f2e8;
   --offwhite: var(--white);
   --grey: #4c5a55;
+  --lightgrey: #ececec;
+  --lightgray: var(--lightgrey);
   --gray: var(--grey);
   /* --black: #1d1d1d; */
   --black: #1b1a16;
@@ -46,18 +54,25 @@ body {
   font-size: 1.5rem;
   margin: 0;
 }
-h1, h2, h3 {
+.logo h1 {
     font-family: 'LiuJianMaoCao', cursive;
     font-weight: normal;
     font-style: normal;
   }
+  h1 {
+    font-size: 3em;
+    margin: 0 0 0.5em 0
+  }
   h2 {
-    font-size: 2.8em;
+    font-size: 2.4em;
     margin: 0 0 0.5em 0
   }
   h3 {
-    font-size: 2em;
+    font-size: 1.6em;
     margin: 0 0 0.5em 0
+  }
+  p {
+    margin: 0 0 0.75em 0;
   }
   a {
     text-decoration: none;
@@ -65,6 +80,9 @@ h1, h2, h3 {
   }
   a:hover {
     text-decoration: underline;
+  }
+  strong {
+    font-weight:
   }
 `;
 

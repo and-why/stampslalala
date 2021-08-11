@@ -25,7 +25,9 @@ export default function Pagination({ page }) {
   return (
     <PaginationStyles>
       <Head>
-        <title>Products Page {page} of total | Stamps lalala</title>
+        <title>
+          Products Page {page} of {pageCount} | Stamps lalala
+        </title>
       </Head>
       <NextLink href={`/products/${parseInt(page) - 1}`}>
         <a aria-disabled={page <= 1}>Prev</a>

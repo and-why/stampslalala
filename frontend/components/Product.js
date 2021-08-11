@@ -6,9 +6,10 @@ import Title from './styles/Title';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
 import DeleteProduct from './DeleteProduct';
+import AddToCart from './AddToCart';
 
 export default function Product({ product }) {
-  console.log(product);
+  // console.log(product);
   return (
     <ItemStyles>
       <NextImage
@@ -23,9 +24,9 @@ export default function Product({ product }) {
         objectFit="contain"
         alt={product.name}
       />
-      <Title>
+      <h3>
         <NextLink href={`/product/${product.id}`}>{product.name}</NextLink>
-      </Title>
+      </h3>
       <PriceTag>{formatMoney(product.price)}</PriceTag>
       <p>{product.description}</p>
       <div className="buttonList">
@@ -39,6 +40,7 @@ export default function Product({ product }) {
         >
           Edit
         </NextLink>
+        <AddToCart id={product.id} />
         <DeleteProduct id={product.id}>Delete</DeleteProduct>
       </div>
     </ItemStyles>
