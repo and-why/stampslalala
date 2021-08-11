@@ -5,6 +5,7 @@ import Cart from './Cart';
 import CartCount from './CartCount';
 import { FacebookIcon, TwitterIcon } from './icons/socialIcons';
 import Nav from './Nav';
+import Search from './Search';
 import { useUser } from './User';
 
 const Logo = styled.h1`
@@ -97,7 +98,7 @@ export default function Header() {
           </NextLink>
         </Logo>
         <div className="headerRight">
-          <input placeholder="Search..." />
+          <Search />
           <a onClick={toggleCart}>
             <CartCount
               count={user?.cart?.reduce(
