@@ -99,10 +99,11 @@ export default function Header() {
         </Logo>
         <div className="headerRight">
           <Search />
-          <a onClick={toggleCart}>
+          <a onClick={openCart}>
             <CartCount
               count={user?.cart?.reduce(
-                (tally, cartItem) => tally + cartItem.quantity,
+                (tally, cartItem) =>
+                  tally + (cartItem.product ? cartItem.quantity : 0),
                 0
               )}
             />

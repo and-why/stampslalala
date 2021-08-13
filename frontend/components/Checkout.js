@@ -52,7 +52,10 @@ export function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
   const [checkout, { error: graphQLError }] = useMutation(
-    CREATE_ORDER_MUTATION
+    CREATE_ORDER_MUTATION,
+    {
+      refetchQueries: [{ query: CURRENT_USER_QUERY }],
+    }
   );
   async function handleSubmit(e) {
     // 1. stop for from submitting
@@ -83,12 +86,13 @@ export function CheckoutForm() {
       },
     });
 
-    // 7. Close the cart
-    closeCart();
     // 6. Change the page to view the order
     router.push({
       pathname: '/orders',
+      query: { id: order.data.checkout.id },
     });
+    // 7. Close the cart
+    closeCart();
     // 8. Turn the loader off
     setLoading(false);
     nProgress.done();

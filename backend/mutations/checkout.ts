@@ -81,13 +81,15 @@ async function checkout(
       items: { create: orderItems },
       user: { connect: { id: userId } },
     },
+    resolveFields: false,
   });
 
   // 6. clean up any old cart items
-  const cartItemIds = cartItems.map((cartItem) => cartItem.id);
+  const cartItemIds = user.cart.map((cartItem) => cartItem.id);
   await context.lists.CartItem.deleteMany({
     ids: cartItemIds,
   });
+  return order;
 }
 
 export default checkout;
