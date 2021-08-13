@@ -1,7 +1,5 @@
+import AllOrders from '../components/AllOrders';
+
 export default function OrderPage() {
-  return (
-    <>
-      <p>Hello!</p>
-    </>
-  );
+  return <AllOrders />;
 }
