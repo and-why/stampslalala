@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import NextImage from 'next/image';
 import styled from 'styled-components';
 import formatMoney from '../lib/formatMoney';
