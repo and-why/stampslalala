@@ -91,9 +91,9 @@ export default function Header() {
         <Logo>
           <NextLink href="/">
             <a>
-              Stamps
+              WoodYou
               <br />
-              <span>lala</span>
+              <span>Designs</span>
             </a>
           </NextLink>
         </Logo>
