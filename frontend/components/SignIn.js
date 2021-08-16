@@ -1,8 +1,10 @@
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
+import { useRouter } from 'next/dist/client/router';
+import NextLink from 'next/link';
 import Form from './styles/Form';
 import useForm from '../lib/useForm';
-import { CURRENT_USER_QUERY } from './User';
+import { CURRENT_USER_QUERY, useUser } from './User';
 import DisplayError from './ErrorMessage';
 
 const SIGNIN_MUTATION = gql`
@@ -28,17 +30,15 @@ export default function SignIn() {
     email: '',
     password: '',
   });
-  const [signin, { data, loading }] = useMutation(SIGNIN_MUTATION, {
+  const [signin, { data, loading, error }] = useMutation(SIGNIN_MUTATION, {
     variables: inputs,
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
   async function handleSubmit(e) {
     e.preventDefault();
     await signin();
-    // console.log(data);
-    resetForm();
   }
-  const error =
+  const userError =
     data?.authenticateUserWithPassword.__typename ===
     'UserAuthenticationWithPasswordFailure'
       ? data?.authenticateUserWithPassword
@@ -51,7 +51,7 @@ export default function SignIn() {
           If you have an acocunt, please sign in here with your email and
           password.
         </p>
-        <DisplayError error={error} />
+        <DisplayError error={error || userError} />
         <fieldset disabled={loading} aria-busy={loading}>
           <label htmlFor="email">
             Email
@@ -76,6 +76,9 @@ export default function SignIn() {
             />
           </label>
           <button type="submit">Sign in</button>
+          <NextLink href="/forgot-password">
+            <a>Forgot your password?</a>
+          </NextLink>
         </fieldset>
       </Form>
     </>

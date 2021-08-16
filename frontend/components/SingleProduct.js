@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import NextImage from 'next/image';
 import Head from 'next/head';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import DisplayError from './ErrorMessage';
 
 const ProductStyles = styled.div`
@@ -55,16 +56,37 @@ export default function SingleProduct({ id }) {
       <Head>
         <title>{Product.name} | Stamps lalala</title>
       </Head>
-      <NextImage
-        alt={Product.photo.altText}
-        src={Product.photo.image.publicUrlTransformed}
-        height="500px"
-        width="500px"
-        objectFit="contain"
-      />
+      <motion.figure
+        layoutId="image"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+      >
+        <NextImage
+          alt={Product.photo.altText}
+          src={Product.photo.image.publicUrlTransformed}
+          height="500px"
+          width="500px"
+          objectFit="contain"
+        />
+      </motion.figure>
       <div className="details">
-        <h2>{Product.name}</h2>
-        <p>{Product.description}</p>
+        <motion.h2
+          layoutId="title"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          {Product.name}
+        </motion.h2>
+        <motion.p
+          layoutId="description"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          {Product.description}
+        </motion.p>
       </div>
     </ProductStyles>
   );

@@ -3,11 +3,9 @@ import { list } from '@keystone-next/keystone/schema';
 import { isSignedIn, rules } from '../access';
 
 export const Product = list({
-  // todo:
-  // access
   access: {
     create: isSignedIn,
-    read: rules.canReadProducts,
+    read: () => true,
     update: rules.canManageProducts,
     delete: rules.canManageProducts,
   },

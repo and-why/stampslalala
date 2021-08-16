@@ -3,6 +3,7 @@
 import { ApolloProvider } from '@apollo/client';
 import NProgress from 'nprogress';
 import Router from 'next/router';
+import { AnimateSharedLayout } from 'framer-motion';
 import Page from '../components/Page';
 import withData from '../lib/withData';
 import '../components/styles/nprogress.css';
@@ -14,13 +15,15 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps, apollo }) {
   return (
-    <ApolloProvider client={apollo}>
-      <CartStateProvider>
-        <Page>
-          <Component {...pageProps} />
-        </Page>
-      </CartStateProvider>
-    </ApolloProvider>
+    <AnimateSharedLayout>
+      <ApolloProvider client={apollo}>
+        <CartStateProvider>
+          <Page>
+            <Component {...pageProps} />
+          </Page>
+        </CartStateProvider>
+      </ApolloProvider>
+    </AnimateSharedLayout>
   );
 }
 

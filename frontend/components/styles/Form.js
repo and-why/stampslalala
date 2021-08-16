@@ -12,9 +12,21 @@ const loading = keyframes`
   }
 `;
 
+export const FormPageStyle = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+  align-items: stretch;
+  margin: 20px auto;
+  padding: 0 20px;
+  max-width: var(--maxWidth);
+`;
+
 const Form = styled.form`
   background: rgba(0, 0, 0, 0.02);
-
+  max-width: 600px;
   padding: 20px;
   font-size: 1.5rem;
   line-height: 1.5;
@@ -34,6 +46,11 @@ const Form = styled.form`
       outline: 0;
       border-color: var(--red);
     }
+  }
+  a {
+    margin-left: 1em;
+    font-size: 0.9em;
+    font-weight: 400;
   }
   button,
   input[type='submit'] {

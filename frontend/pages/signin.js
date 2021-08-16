@@ -1,27 +1,26 @@
+import { useRouter } from 'next/dist/client/router';
 import styled from 'styled-components';
 import RequestReset from '../components/RequestReset';
 import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
+import { FormPageStyle } from '../components/styles/Form';
 import Title from '../components/styles/Title';
-
-export const FormPageStyle = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  justify-content: center;
-  align-items: flex-start;
-  align-items: stretch;
-  margin: 20px auto;
-  padding: 0 20px;
-  max-width: var(--maxWidth);
-`;
+import { useUser } from '../components/User';
 
 export default function SignInPage() {
+  const user = useUser();
+  const router = useRouter();
+  if (user) {
+    router.push('/');
+  }
   return (
-    <FormPageStyle>
-      <SignIn />
-      <SignUp />
-      <RequestReset />
-    </FormPageStyle>
+    <>
+      {!user && (
+        <FormPageStyle>
+          <SignIn />
+          <SignUp />
+        </FormPageStyle>
+      )}
+    </>
   );
 }

@@ -6,7 +6,7 @@ import { permissionFields } from './fields';
 export const Role = list({
   access: {
     create: permissions.canManageRoles,
-    read: permissions.canManageRoles,
+    read: () => true,
     update: permissions.canManageRoles,
     delete: permissions.canManageRoles,
   },
@@ -19,7 +19,7 @@ export const Role = list({
     name: text({ isRequired: true }),
     ...permissionFields,
     assignedTo: relationship({
-      ref: 'User.role', // todo: add to user
+      ref: 'User.role',
       many: true,
       ui: {
         itemView: { fieldMode: 'read' },
